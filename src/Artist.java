@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Artist {
     private String name;
     private int birthYear;
@@ -7,13 +9,6 @@ public class Artist {
         this.name = name;
         this.birthYear = birthYear;
         this.country = country;
-    }
-
-    public void getInfo(){
-        System.out.println("Info about artist:");
-        System.out.println("Name: " + name);
-        System.out.println("Birth Year: " + birthYear);
-        System.out.println("Country: " + country);
     }
 
     public String getName() {
@@ -38,6 +33,22 @@ public class Artist {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Artist{" + "name=" + name + ", birthYear=" + birthYear + ", country=" + country + '}';
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        Artist artist = (Artist) object;
+        return this.name.equals(artist.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
 

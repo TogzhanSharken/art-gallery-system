@@ -1,34 +1,16 @@
-public class Artwork {
-    private String title;
-    private int year;
-    private double price;
-    private Artist artist;
+import java.util.Objects;
+
+public abstract class Artwork {
+    protected String title;
+    protected int year;
+    protected double price;
+    protected Artist artist;
 
     public Artwork(String title, int year, double price, Artist artist) {
         this.title = title;
         this.year = year;
         this.price = price;
         this.artist = artist;
-    }
-
-    public void getInfo(){
-        System.out.println("Info about artwork:");
-        System.out.println("Title: " + this.title);
-        System.out.println("Year: " + this.year);
-        System.out.println("Price: " + this.price);
-        artist.getInfo();
-    }
-
-    public String comparePrice(Artwork artwork){
-        if(this.price == artwork.price){
-            return this.title + "'s price is equal to " + artwork.title + "'s price.";
-        }
-        else if(this.price < artwork.price){
-            return this.title + "'s price is less than " + artwork.title + "'s price.";
-        }
-        else {
-            return this.title + "'s price is more than " + artwork.title + "'s price.";
-        }
     }
 
     public void setTitle(String title) {
@@ -61,5 +43,16 @@ public class Artwork {
 
     public Artist getArtist() {
         return this.artist;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        Artwork artwork = (Artwork) object;
+        return this.title.equals(artwork.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title);
     }
 }
