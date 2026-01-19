@@ -6,12 +6,14 @@ public class DB {
 
     private static final String URL =
             "jdbc:postgresql://localhost:5432/art_gallery_db";
-
     private static final String USER = "postgres";
     private static final String PASSWORD = "05052007";
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+    public static Connection getConnection() {
+        try {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException e) {
+            throw new RuntimeException("Database connection failed", e);
+        }
     }
 }
-

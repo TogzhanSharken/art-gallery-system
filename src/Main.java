@@ -46,13 +46,34 @@ void main() {
 */
 
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
         ArtworkRepository repo = new ArtworkRepository();
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Enter title: ");
+        String title = scanner.nextLine();
+
+        System.out.print("Enter year: ");
+        int year = scanner.nextInt();
+
+        System.out.print("Enter price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.print("Enter style: ");
+        String style = scanner.nextLine();
+
+        repo.addArtwork(title, year, price, style, 1);
+
+        System.out.println("\nArtworks from database:");
         for (String artwork : repo.getAllArtworks()) {
             System.out.println(artwork);
         }
+
+        scanner.close();
     }
 }
